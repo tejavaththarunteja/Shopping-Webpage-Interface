@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HighFIVE Travels</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #eef3f7;
+      color: #21243d;
+    }
+    .container {
+      background: #fff;
+      max-width: 750px;
+      margin: 30px auto;
+      padding: 36px 36px 40px 36px;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.09);
+    }
+    header {
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .banner {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 18px;
+    }
+    nav {
+      margin-bottom: 22px;
+      text-align: center;
+    }
+    nav a {
+      margin: 0 14px;
+      font-size: 1.07em;
+      color: #0077bb;
+      text-decoration: none;
+      font-variant: small-caps;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    nav a.active {
+      color: #233b80;
+      text-decoration: underline;
+    }
+    section {
+      display: none;
+    }
+    section.active {
+      display: block;
+      animation: fadeIn 0.5s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0;}
+      to { opacity: 1; }
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    th, td {
+      padding: 10px 7px;
+      border: 1px solid #bbbccd;
+      text-align: left;
+      background: #fcfcfd;
+    }
+    th {
+      background: #dce7f3;
+      font-size: 1.07em;
+    }
+    .package-img {
+      height: 55px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    form label {
+      margin-top: 10px;
+      display: block;
+      font-size: 1em;
+    }
+    form input, form select, form button, textarea {
+      width: 100%;
+      margin-bottom: 12px;
+      padding: 7px 8px;
+      border-radius: 5px;
+      border: 1px solid #ccd6e2;
+      font-size: 1em;
+      box-sizing: border-box;
+    }
+    form button {
+      background: #0077bb;
+      color: #fff;
+      border: none;
+      font-weight: bold;
+      font-size: 1.13em;
+      margin-top: 8px;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    form button:hover {
+      background: #005589;
+    }
+    .map-embed {
+      width: 100%;
+      border: 1px solid #888;
+      height: 180px;
+      border-radius: 6px;
+      margin-bottom: 11px;
+    }
+  </style>
+  <script>
+    // Navigation logic
+    function showSection(id) {
+      var sections = document.querySelectorAll('section');
+      sections.forEach(function(section) {
+        section.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+      // nav active states
+      var navlinks = document.querySelectorAll('nav a');
+      navlinks.forEach(function(link) {
+        link.classList.remove('active');
+      });
+      document.getElementById('nav-' + id).classList.add('active');
+    }
+    window.onload = function() {
+      showSection('home');
+    };
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>HighFIVE Travels</h1>
+      <img src="https://d3jbu7vaxvlagf.cloudfront.net/small/v2/category_media/logo_template_img_16830060697484.jpeg" alt="Travel Banner" class="banner">
+    </header>
+    <nav>
+      <a id="nav-home" onclick="showSection('home')">Home</a>
+      <a id="nav-packages" onclick="showSection('packages')">Tour Packages</a>
+      <a id="nav-booking" onclick="showSection('booking')">Booking</a>
+      <a id="nav-contact" onclick="showSection('contact')">Contact Us</a>
+    </nav>
+
+    <!-- Home Page -->
+    <section id="home">
+      <h2>Welcome to HighFIVE Travels!</h2>
+      <p style="font-size: 1.21em;">
+        Your next adventure is just a click away. <br />
+        Explore amazing packages, book your dream journey, or get in touch for customized travel assistance.
+      </p>
+    </section>
+
+    <!-- Packages Page -->
+    <section id="packages">
+      <h2>Tour Packages</h2>
+      <table>
+        <tr>
+          <th>Destination</th>
+          <th>Duration</th>
+          <th>Price</th>
+          <th>Image</th>
+        </tr>
+        <tr>
+          <td>Paris</td>
+          <td>5 Days</td>
+          <td>₹75,000</td>
+          <td><img src="https://i.redd.it/08ahrznk9zq61.jpg" alt="Paris" class="package-img"></td>
+        </tr>
+        <tr>
+          <td>Goa</td>
+          <td>4 Days</td>
+          <td>₹14,000</td>
+          <td><img src="https://saishishirtours.in/wp-content/uploads/2025/07/Baga-Beach.jpg" alt="Goa" class="package-img"></td>
+        </tr>
+        <tr>
+          <td>Dubai</td>
+          <td>6 Days</td>
+          <td>₹58,000</td>
+          <td><img src="https://www.investindubai.gov.ae/-/media/gathercontent/poi/b/burj-khalifa/fallback-image/burj-khalifa-det-3.jpg" alt="Dubai" class="package-img"></td>
+        </tr>
+        <!-- Add more packages as needed -->
+      </table>
+    </section>
+
+    <!-- Booking Form -->
+    <section id="booking">
+      <h2>Book Your Trip</h2>
+      <form>
+        <label>Name:</label>
+        <input type="text" name="name" required>
+        <label>Email:</label>
+        <input type="email" name="email" required>
+        <label>Destination:</label>
+        <select name="destination" required>
+          <option value="">--Select--</option>
+          <option value="Paris">Paris</option>
+          <option value="Goa">Goa</option>
+          <option value="Dubai">Dubai</option>
+          <!-- Add more options as needed -->
+        </select>
+        <label>Number of Travelers:</label>
+        <input type="number" name="travelers" min="1" required>
+        <label>Travel Date:</label>
+        <input type="date" name="date" required>
+        <button type="submit">Book Now</button>
+      </form>
+    </section>
+
+    <!-- Contact Page -->
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <form>
+        <label>Name:</label>
+        <input type="text" name="name" required>
+        <label>Email:</label>
+        <input type="email" name="email" required>
+        <label>Message:</label>
+        <textarea name="message" rows="3" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+      <br>
+      <iframe src="https://maps.google.com/maps?q=Delhi&t=&z=13&ie=UTF8&iwloc=&output=embed" class="map-embed"></iframe>
+    </section>
+  </div>
+</body>
+</html>
